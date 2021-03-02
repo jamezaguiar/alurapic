@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Photo } from './photos/photo/photo.model';
 import { PhotoService } from './photos/photo/photo.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { PhotoService } from './photos/photo/photo.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  photos: { url: string; description: string }[] = [];
+  photos: Photo[] = [];
 
   constructor(private photoService: PhotoService) {}
 
