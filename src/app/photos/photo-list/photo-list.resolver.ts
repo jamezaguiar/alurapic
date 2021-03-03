@@ -20,6 +20,6 @@ export class PhotoListResolver implements Resolve<Photo[]> {
   ): Photo[] | Observable<Photo[]> | Promise<Photo[]> {
     const { userName } = route.params;
 
-    return this.photoService.listUserPhotos(userName);
+    return this.photoService.listUserPhotosPaginated(userName, 1);
   }
 }
