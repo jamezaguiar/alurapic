@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from '../token/token.service';
+import { Observable } from 'rxjs';
+import { IUser } from '../user/IUser';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,13 @@ import { TokenService } from '../token/token.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  user$: Observable<IUser | null>;
+  user!: IUser | null;
+
+  constructor(userService: UserService) {
+    this.user$ = userService.getUser();
+    this.user$.subscribe((user) => (this.user = user));
+  }
 
   ngOnInit(): void {}
 }
