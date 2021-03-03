@@ -1,15 +1,15 @@
 <h4 class="text-center">Login</h4>
 
-<form [formGroup]="form" class="form mt-4">
+<form [formGroup]="form" class="form mt-4" (submit)="signIn()">
   <div class="form-group">
     <input
-      formControlName="username"
+      formControlName="userName"
       class="form-control"
       placeholder="username"
       autofocus
     />
     <app-vmessage
-      *ngIf="!form.get('username')?.valid && form.get('username')?.touched"
+      *ngIf="!form.get('userName')?.valid && form.get('userName')?.touched"
       text="Username is required!"
     >
     </app-vmessage>
