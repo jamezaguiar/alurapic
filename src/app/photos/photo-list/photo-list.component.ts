@@ -12,6 +12,7 @@ import { PhotoService } from '../photo/photo.service';
 })
 export class PhotoListComponent implements OnInit {
   photos: Photo[] = [];
+  filter: string = '';
 
   constructor(
     private photoService: PhotoService,
@@ -21,10 +22,15 @@ export class PhotoListComponent implements OnInit {
   ngOnInit(): void {
     const { userName } = this.route.snapshot.params;
 
-    console.log(userName);
-
     this.photoService.listUserPhotos(userName).subscribe((photos) => {
       this.photos = photos;
     });
+  }
+
+  onKeyUp(target: EventTarget | null) {
+    if (target) {
+      let elemento = target as HTMLInputElement;
+      this.filter = elemento.value;
+    }
   }
 }
