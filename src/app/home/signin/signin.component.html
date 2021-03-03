@@ -8,12 +8,11 @@
       placeholder="username"
       autofocus
     />
-    <small
+    <app-vmessage
       *ngIf="!form.get('username')?.valid && form.get('username')?.touched"
-      class="text-danger d-block mt-2"
+      text="Username is required!"
     >
-      User name is required!
-    </small>
+    </app-vmessage>
   </div>
 
   <div class="form-group">
@@ -23,12 +22,11 @@
       class="form-control"
       placeholder="password"
     />
-    <small
+    <app-vmessage
       *ngIf="!form.get('password')?.valid && form.get('password')?.touched"
-      class="text-danger d-block mt-2"
+      text="Password is required!"
     >
-      Password is required!
-    </small>
+    </app-vmessage>
   </div>
 
   <button type="submit" class="btn btn-primary btn-block">login</button>
