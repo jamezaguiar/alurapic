@@ -76,7 +76,7 @@
     </app-vmessage>
     <app-vmessage
       *ngIf="
-        form.get('userName')?.touched && form.get('userName')?.errors?.pattern
+        form.get('userName')?.touched && form.get('userName')?.errors?.lowerCase
       "
       text="Must be lowercase"
     >
