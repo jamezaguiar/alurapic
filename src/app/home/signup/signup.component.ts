@@ -20,6 +20,7 @@ import { PlatformDetectorService } from '../../core/platform-detector/platform-d
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
+  providers: [UserNotTakenValidatorService],
 })
 export class SignupComponent implements OnInit, AfterViewInit {
   form!: FormGroup;
