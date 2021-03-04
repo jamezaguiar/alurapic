@@ -1,6 +1,9 @@
+<h4 class="text-center">Register to embrace a new world!</h4>
+
 <form [formGroup]="form" class="form mt-4" (submit)="signUp()">
   <div class="form-group">
     <input
+      #emailInput
       formControlName="email"
       class="form-control"
       placeholder="email"
