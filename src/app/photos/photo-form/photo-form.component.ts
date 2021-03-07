@@ -11,8 +11,8 @@ import { PhotoService } from '../photo/photo.service';
 })
 export class PhotoFormComponent implements OnInit {
   form!: FormGroup;
-  fileEvent!: Event;
   file!: File;
+  preview!: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,11 +28,17 @@ export class PhotoFormComponent implements OnInit {
     });
   }
 
+  handleFile(fileEvent: Event) {
+    this.file = (fileEvent.target as HTMLInputElement)?.files![0];
+
+    const reader = new FileReader();
+    reader.onload = (event) => (this.preview = event.target?.result as string);
+    reader.readAsDataURL(this.file);
+  }
+
   upload() {
     const description = this.form.get('description')?.value;
     const allowComments = this.form.get('allowComments')?.value;
-
-    this.file = (this.fileEvent.target as HTMLInputElement)?.files![0];
 
     this.photoService
       .uploadPhoto(description, allowComments, this.file)
