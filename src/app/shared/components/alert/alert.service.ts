@@ -7,7 +7,7 @@ import { Alert, AlertType } from './alert.model';
   providedIn: 'root',
 })
 export class AlertService {
-  alertSubject!: Subject<Alert>;
+  alertSubject: Subject<Alert> = new Subject();
   constructor() {}
 
   success(message: string) {
