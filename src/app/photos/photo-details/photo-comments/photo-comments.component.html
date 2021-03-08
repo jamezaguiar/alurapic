@@ -16,7 +16,7 @@
     </li>
   </ul>
   <div class="mt-4">
-    <form [formGroup]="form">
+    <form [formGroup]="form" (submit)="sendComment()">
       <div class="input-group">
         <textarea formControlName="comment" class="form-control"></textarea>
         <div class="input-group-append">
