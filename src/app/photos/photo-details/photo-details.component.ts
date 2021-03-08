@@ -38,6 +38,14 @@ export class PhotoDetailsComponent implements OnInit {
     });
   }
 
+  like(photo: Photo) {
+    this.photoService.likePhoto(photo.id).subscribe((liked) => {
+      if (liked) {
+        this.photo$ = this.photoService.getPhotoDetails(photo.id);
+      }
+    });
+  }
+
   remove() {
     this.photoService.deletePhoto(this.photoId).subscribe(
       () => {

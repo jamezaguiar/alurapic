@@ -11,7 +11,11 @@
       <small>
         <p class="text-left break-word">{{ photo.description }}</p>
         <div class="text-left mb-4">
-          <i appShowIfLogged class="fa fa-heart-o fa-2x mr-2 pull-left">
+          <i
+            appShowIfLogged
+            (click)="like(photo)"
+            class="fa fa-heart-o fa-2x mr-2 pull-left"
+          >
             {{ photo.likes }}
           </i>
           <i class="fa fa-comment-o fa-2x mr-2 ml-2"></i>{{ photo.comments }}
