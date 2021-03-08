@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { Photo } from '../photo/photo.model';
+import { PhotoService } from '../photo/photo.service';
 
 @Component({
   selector: 'app-photo-details',
@@ -7,11 +11,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./photo-details.component.css'],
 })
 export class PhotoDetailsComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  photo$!: Observable<Photo>;
+
+  constructor(
+    private route: ActivatedRoute,
+    private photoService: PhotoService
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params['photoId']);
+      this.photo$ = this.photoService.getPhotoDetails(params['photoId']);
     });
   }
 }

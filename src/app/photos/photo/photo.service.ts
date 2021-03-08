@@ -21,6 +21,10 @@ export class PhotoService {
     return this.http.get<Photo[]>(`${API}/${userName}/photos`, { params });
   }
 
+  getPhotoDetails(photoId: string) {
+    return this.http.get<Photo>(`${API}/photos/${photoId}`);
+  }
+
   uploadPhoto(description: string, allowComments: boolean, file: File) {
     const formData = new FormData();
     formData.append('description', description);
