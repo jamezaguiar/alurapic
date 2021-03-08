@@ -31,7 +31,7 @@ export class PhotoDetailsComponent implements OnInit {
       this.photo$ = this.photoService.getPhotoDetails(this.photoId);
       this.photo$.subscribe(
         () => {},
-        (err) => {
+        () => {
           this.router.navigate(['not-found']);
         }
       );
