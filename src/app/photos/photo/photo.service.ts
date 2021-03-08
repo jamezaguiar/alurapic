@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
 
 import { Photo } from './photo.model';
 import { PhotoComment } from './photo-comment.model';
@@ -43,6 +45,15 @@ export class PhotoService {
     formData.append('imageFile', file);
 
     return this.http.post(`${API}/photos/upload`, formData);
+  }
+
+  likePhoto(photoId: number) {
+    return this.http
+      .post(`${API}/photos/${photoId}/like`, {}, { observe: 'response' })
+      .pipe(map((res) => true))
+      .pipe(
+        catchError((err) => (err.status == '304' ? of(false) : throwError(err)))
+      );
   }
 
   deletePhoto(photoId: number) {
