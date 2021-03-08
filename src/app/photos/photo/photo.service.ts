@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Photo } from './photo.model';
+import { PhotoComment } from './photo-comment.model';
 
 const API = 'http://localhost:3000';
 
@@ -21,8 +22,12 @@ export class PhotoService {
     return this.http.get<Photo[]>(`${API}/${userName}/photos`, { params });
   }
 
-  getPhotoDetails(photoId: string) {
+  getPhotoDetails(photoId: number) {
     return this.http.get<Photo>(`${API}/photos/${photoId}`);
+  }
+
+  getPhotoComments(photoId: number) {
+    return this.http.get<PhotoComment[]>(`${API}/photos/${photoId}/comments`);
   }
 
   uploadPhoto(description: string, allowComments: boolean, file: File) {
