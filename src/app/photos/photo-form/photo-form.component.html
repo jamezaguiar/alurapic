@@ -3,6 +3,7 @@
     <div class="col-md-6 text-center">
       <div class="form-group" *ngIf="!preview; else showPreview">
         <button
+          appImmediateClick
           type="button"
           (click)="fileInput.click()"
           class="btn btn-primary"
