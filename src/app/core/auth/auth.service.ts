@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
+import { environment as env } from '@env/environment';
+
 import { IUser } from '../user/IUser';
 import { UserService } from '../user/user.service';
 
-const API_URL = 'http://localhost:3000';
+const { API_URL } = env;
 
 @Injectable({
   providedIn: 'root',
