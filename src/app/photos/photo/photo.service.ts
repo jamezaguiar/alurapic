@@ -44,4 +44,8 @@ export class PhotoService {
 
     return this.http.post(`${API}/photos/upload`, formData);
   }
+
+  deletePhoto(photoId: number) {
+    return this.http.delete(`${API}/photos/${photoId}`);
+  }
 }
