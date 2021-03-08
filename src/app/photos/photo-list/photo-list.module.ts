@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { PhotoModule } from '../photo/photo.module';
 import { CardModule } from '../../shared/components/card/card.module';
@@ -19,6 +20,12 @@ import { SearchComponent } from './search/search.component';
     FilterByDescriptionPipe,
     SearchComponent,
   ],
-  imports: [CommonModule, PhotoModule, CardModule, DarkenOnHoverModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    PhotoModule,
+    CardModule,
+    DarkenOnHoverModule,
+  ],
 })
 export class PhotoListModule {}
