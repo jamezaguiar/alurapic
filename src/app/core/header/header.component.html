@@ -1,7 +1,12 @@
 <header class="fixed-top">
   <nav class="navbar navbar-light bg-white">
     <a class="navbar-brand">
-      <i class="fa fa-bars mr-2" (click)="menu.toggle()"></i>
+      <i
+        tabindex="0"
+        (keyup.space)="menu.toggle()"
+        class="fa fa-bars mr-2"
+        (click)="menu.toggle()"
+      ></i>
       ALURAPIC
     </a>
     <app-menu #menu>
