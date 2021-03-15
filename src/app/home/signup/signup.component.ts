@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { lowerCaseValidator } from '../../shared/validators/lower-case.validator';
+import { userNamePassword } from './username-password.validator';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 
 import { ISignUpData } from './isign-up-data';
@@ -35,37 +36,42 @@ export class SignupComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+    this.form = this.formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
 
-      fullName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(40),
+        fullName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(40),
+          ],
         ],
-      ],
 
-      userName: [
-        '',
-        [
-          Validators.required,
-          lowerCaseValidator,
-          Validators.minLength(2),
-          Validators.maxLength(30),
+        userName: [
+          '',
+          [
+            Validators.required,
+            lowerCaseValidator,
+            Validators.minLength(2),
+            Validators.maxLength(30),
+          ],
+          this.userNotTakenValidator.checkUserNameTaken(),
         ],
-        this.userNotTakenValidator.checkUserNameTaken(),
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(14),
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(14),
+          ],
         ],
-      ],
-    });
+      },
+      {
+        validator: userNamePassword,
+      }
+    );
   }
 
   ngAfterViewInit(): void {
