@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AlertModule } from '../shared/components/alert/alert.module';
 import { LoadingModule } from '../shared/loading/loading.module';
+import { MenuModule } from 'app/shared/components/menu/menu.module';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,6 +20,7 @@ import { RequestInterceptor } from './auth/request.interceptor';
     RouterModule,
     AlertModule,
     LoadingModule,
+    MenuModule,
   ],
   exports: [HeaderComponent, FooterComponent],
   providers: [
