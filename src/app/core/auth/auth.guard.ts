@@ -25,7 +25,11 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (!this.userService.isLogged()) {
-      this.router.navigate(['']);
+      this.router.navigate([''], {
+        queryParams: {
+          fromUrl: state.url,
+        },
+      });
       return false;
     }
     return true;
