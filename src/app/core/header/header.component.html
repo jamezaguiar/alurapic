@@ -10,9 +10,8 @@
       ALURAPIC
     </a>
     <app-menu #menu>
-      <ul>
-        <li>Menu item 1</li>
-        <li>Menu item 2</li>
+      <ul class="list-unstyled">
+        <li><a appShowIfLogged [routerLink]="['p', 'add']">Upload</a></li>
       </ul>
     </app-menu>
     <div *ngIf="user$ | async as user; else login">

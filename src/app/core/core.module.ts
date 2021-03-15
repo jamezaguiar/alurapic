@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertModule } from '../shared/components/alert/alert.module';
 import { LoadingModule } from '../shared/loading/loading.module';
 import { MenuModule } from 'app/shared/components/menu/menu.module';
+import { ShowIfLoggedModule } from 'app/shared/directives/show-if-logged/show-if-logged.module';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -21,6 +22,7 @@ import { RequestInterceptor } from './auth/request.interceptor';
     AlertModule,
     LoadingModule,
     MenuModule,
+    ShowIfLoggedModule,
   ],
   exports: [HeaderComponent, FooterComponent],
   providers: [
