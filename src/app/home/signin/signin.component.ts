@@ -41,23 +41,25 @@ export class SigninComponent implements OnInit, AfterViewInit {
   }
 
   signIn() {
-    const userName = this.form.get('userName')?.value;
-    const password = this.form.get('password')?.value;
+    if (this.form.valid || !this.form.pending) {
+      const userName = this.form.get('userName')?.value;
+      const password = this.form.get('password')?.value;
 
-    this.auth.authenticate(userName, password).subscribe(
-      (response) => {
-        console.log(response);
-        this.router.navigate(['user', userName]);
-      },
-      (err) => {
-        console.log(err);
-        alert('Invalid username or password.');
-        this.form.reset();
+      this.auth.authenticate(userName, password).subscribe(
+        (response) => {
+          console.log(response);
+          this.router.navigate(['user', userName]);
+        },
+        (err) => {
+          console.log(err);
+          alert('Invalid username or password.');
+          this.form.reset();
 
-        // Verify if the current platform is the web browser
-        this.platformDetector.isPlatformBrowser() &&
-          this.userNameInput.nativeElement.focus();
-      }
-    );
+          // Verify if the current platform is the web browser
+          this.platformDetector.isPlatformBrowser() &&
+            this.userNameInput.nativeElement.focus();
+        }
+      );
+    }
   }
 }
